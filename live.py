@@ -1,6 +1,5 @@
 # This script will detect faces via your webcam.
 # Tested with OpenCV3
-
 import cv2
 
 cap = cv2.VideoCapture(0)
@@ -8,9 +7,16 @@ cap = cv2.VideoCapture(0)
 # Create the haar cascade
 faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
+frame_width = int(cap.get(3))
+frame_height = int(cap.get(4))
+out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('M','J','P','G'), 10, (frame_width,frame_height))
+
 while(True):
 	# Capture frame-by-frame
 	ret, frame = cap.read()
+	
+	# Define the codec and create VideoWriter object.
+	out.write(frame)
 
 	# Our operations on the frame come here
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -38,4 +44,5 @@ while(True):
 
 # When everything done, release the capture
 cap.release()
+out.release()
 cv2.destroyAllWindows()
