@@ -18,10 +18,10 @@ while(True):
 	ret, frame = cap.read()
 	
 	# Define the codec and create VideoWriter object.
-	out.write(frame)
+	#out.write(frame)
 	
 	img_count = img_count+1
-	cv2.imwrite("me%s.png" % img_count, frame)
+	#cv2.imwrite("me%s.png" % img_count, frame)
 	
 	# Our operations on the frame come here
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -39,7 +39,7 @@ while(True):
 
 	# Draw a rectangle around the faces
 	for (x, y, w, h) in faces:
-		cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+		cv2.rectangle(frame, (x, y), (x+w, y+h), (225, 179, 255), 2)
 
 
 	# Display the resulting frame
