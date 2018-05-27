@@ -11,13 +11,18 @@ frame_width = int(cap.get(3))
 frame_height = int(cap.get(4))
 out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('M','J','P','G'), 10, (frame_width,frame_height))
 
+img_count = 0
+
 while(True):
 	# Capture frame-by-frame
 	ret, frame = cap.read()
 	
 	# Define the codec and create VideoWriter object.
 	out.write(frame)
-
+	
+	img_count = img_count+1
+	cv2.imwrite("me%s.png" % img_count, frame)
+	
 	# Our operations on the frame come here
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
