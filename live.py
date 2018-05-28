@@ -21,7 +21,7 @@ while(True):
 	#out.write(frame)
 	
 	img_count = img_count+1
-	#cv2.imwrite("me%s.png" % img_count, frame)
+	cv2.imwrite("me{0}.png".format(str(img_count)), frame)
 	
 	# Our operations on the frame come here
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -35,12 +35,12 @@ while(True):
 		#flags = cv2.CV_HAAR_SCALE_IMAGE
 	)
 
+	print(faces)
 	print("Found {0} faces!".format(len(faces)))
 
 	# Draw a rectangle around the faces
 	for (x, y, w, h) in faces:
 		cv2.rectangle(frame, (x, y), (x+w, y+h), (225, 179, 255), 2)
-
 
 	# Display the resulting frame
 	cv2.imshow('frame', frame)
