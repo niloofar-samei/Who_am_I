@@ -5,7 +5,7 @@ import cv2
 cap = cv2.VideoCapture(0)
 
 # Create the haar cascade
-faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+faceCascade = cv2.CascadeClassifier("/home/niloofar/git/venv/lib/python3.6/site-packages/cv2/data/haarcascade_frontalface_default.xml")
 
 frame_width = int(cap.get(3))
 frame_height = int(cap.get(4))
@@ -21,7 +21,7 @@ while(True):
 	#out.write(frame)
 	
 	img_count = img_count+1
-	cv2.imwrite("me{0}.png".format(str(img_count)), frame)
+	#cv2.imwrite("me{0}.png".format(str(img_count+1)), frame)
 	
 	# Our operations on the frame come here
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
